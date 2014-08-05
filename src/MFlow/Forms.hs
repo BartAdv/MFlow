@@ -324,6 +324,7 @@ import System.IO.Unsafe
 import Data.Char(isNumber,toLower)
 import Network.HTTP.Types.Header
 import MFlow.Forms.Cache
+import Debug.Trace
 
 -- | Validates a form or widget result against a validating procedure
 --
@@ -1146,7 +1147,7 @@ nextMessage = do
      updateParams True env req=
         let old= takeWhile isparam  env
             (new,rest)= Data.List.break isparam  req
-            parms= new++ old++ rest
+            parms= new ++ rest ++ old
         
 --        let params= takeWhile isparam  env
 --            fs= fst $ head req
